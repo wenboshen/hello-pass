@@ -7,7 +7,6 @@ using namespace llvm;
 
 #define DEBUG_TYPE "hello"
 
-
 namespace {
   // Hello - The first implementation, without getAnalysisUsage.
   struct Hello : public FunctionPass {
@@ -15,8 +14,7 @@ namespace {
     Hello() : FunctionPass(ID) {}
 
     bool runOnFunction(Function &F) override {
-      errs() << "Hello: ";
-      errs().write_escaped(F.getName()) << '\n';
+      errs() << "Hello: " << F.getName() << '\n';
       return false;
     }
   };
