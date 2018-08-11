@@ -28,28 +28,20 @@ struct CFG : public FunctionPass {
 	}
 
 	bool DFSRecursive(Function * F, int level){
-		if (level >1)
-			return true;
 		//processing all instruction in a basicblock
 		for (Function::iterator bb = F->begin(), fe=F->end(); bb != fe; ++bb) {
 			for (BasicBlock::iterator i=bb->begin(), e=bb->end(); i!=e; ++i) {
 				CallInst *ci = dyn_cast<CallInst>(i);
 				if (ci) {
-					errs() << *i << '\n';
 					Function * callee = ci->getCalledFunction();
 
+					//Handle bitcast func ptr
 					if (!callee) {
-						errs()<<  "aaa\n";
-						Value *vv= ci->getCalledValue();
-						errs() << *vv << '\n';
-						BitCastInst *bi = dyn_cast<BitCastInst>(vv);
-						if (bi)
-							errs() << bi->getOperand(0)->getName() << '\n';
-
-						continue;
+						Value* cv = ci->getCalledValue();
+						callee = dyn_cast<Function>(cv->stripPointerCasts());
 					}
 
-					if (callee->getName().find(".") != string::npos)
+					if (!callee || callee->getName().find(".") != string::npos)
 						continue;
 
 					for (int i=0; i<level; i++)
