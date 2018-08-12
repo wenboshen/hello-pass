@@ -27,7 +27,11 @@ struct CFG : public FunctionPass {
 
 		loadSkipFunc("./cfg/skip.func");
 
-		errs() << "`" << F.getName() << "`" << '\n';
+
+		errs() << "Control Flow Graph for System Call: " << F.getName() << "  \n";
+		errs() << "Please note that every function will be expanded only once!!! \n";
+
+		errs() << "\n`" << F.getName() << "`  \n";
 		DFSRecursive(&F, 1);
 		return false;
 	}
@@ -55,7 +59,7 @@ struct CFG : public FunctionPass {
 					errs() << "[`" << callee->getName()
 						<< "`](https://elixir.bootlin.com/linux/v4.14.62/ident/" 
 						<< callee->getName() 
-						<< ")  \n";
+						<< "){:target=\"_blank\"}  \n";
 
 					if (skip_func_set.find(callee->getName()) != skip_func_set.end())
 						continue;
