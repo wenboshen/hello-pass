@@ -59,7 +59,7 @@ struct CFG : public FunctionPass {
 					errs() << "[`" << callee->getName()
 						<< "`](https://elixir.bootlin.com/linux/v4.14.62/ident/" 
 						<< callee->getName() 
-						<< "){:target=\"_blank\"}  \n";
+						<< ")  \n";
 
 					if (skip_func_set.find(callee->getName()) != skip_func_set.end())
 						continue;
