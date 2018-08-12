@@ -27,8 +27,8 @@ struct CFG : public FunctionPass {
 
 		loadSkipFunc("./cfg/skip.func");
 
-		errs() << "CFG: " << F.getName() << '\n';
-		DFSRecursive(&F, 0);
+		errs() << "`" << F.getName() << "`" << '\n';
+		DFSRecursive(&F, 1);
 		return false;
 	}
 
@@ -50,9 +50,9 @@ struct CFG : public FunctionPass {
 						continue;
 
 					for (int i=0; i<level; i++)
-						errs() << "  ";
+						errs() << "--->";
 
-					errs() << callee->getName() << '\n';
+					errs() << "`" << callee->getName() << "`" << "\n";
 
 					if (skip_func_set.find(callee->getName()) != skip_func_set.end())
 						continue;
