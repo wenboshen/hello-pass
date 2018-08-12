@@ -17,6 +17,7 @@ struct CFG : public FunctionPass {
 	CFG() : FunctionPass(ID) {}
 
 	unordered_set<Function *> func_set;
+	unordered_set<string> skip_func_set = {"printk", "panic", "bust_spinlocks", "mutex_lock"};
 
 	bool runOnFunction(Function &F) override {
 		if (F.getName().compare("SyS_open") != 0)
@@ -48,6 +49,10 @@ struct CFG : public FunctionPass {
 						errs() << "  ";
 
 					errs() << callee->getName() << '\n';
+
+					if (skip_func_set.find(callee->getName()) != skip_func_set.end())
+						continue;
+
 					if (func_set.find(callee) == func_set.end()) {
 						func_set.insert(callee);
 						DFSRecursive(callee, level+1);
