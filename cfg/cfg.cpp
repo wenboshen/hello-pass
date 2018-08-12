@@ -52,7 +52,10 @@ struct CFG : public FunctionPass {
 					for (int i=0; i<level; i++)
 						errs() << "--->";
 
-					errs() << "`" << callee->getName() << "`" << "  \n";
+					errs() << "[`" << callee->getName()
+						<< "`](https://elixir.bootlin.com/linux/v4.14.62/ident/" 
+						<< callee->getName() 
+						<< ")  \n";
 
 					if (skip_func_set.find(callee->getName()) != skip_func_set.end())
 						continue;
