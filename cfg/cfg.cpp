@@ -25,7 +25,7 @@ struct CFG : public FunctionPass {
 		if (F.getName().compare("SyS_open") != 0)
 			return false;
 
-		loadSkipFunc("./cfg/skip.func");
+		//loadSkipFunc("./cfg/skip.func");
 
 
 		errs() << "Control Flow Graph for System Call: " << F.getName() << "  \n";
