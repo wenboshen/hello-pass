@@ -7,6 +7,8 @@
 #include "llvm/Transforms/IPO/PassManagerBuilder.h"
 
 #include <unordered_set>
+#include <fstream>
+
 using namespace llvm;
 using namespace std;
 
@@ -17,11 +19,13 @@ struct CFG : public FunctionPass {
 	CFG() : FunctionPass(ID) {}
 
 	unordered_set<Function *> func_set;
-	unordered_set<string> skip_func_set = {"printk", "panic", "bust_spinlocks", "mutex_lock"};
+	unordered_set<string> skip_func_set;
 
 	bool runOnFunction(Function &F) override {
 		if (F.getName().compare("SyS_open") != 0)
 			return false;
+
+		loadSkipFunc("./cfg/skip.func");
 
 		errs() << "CFG: " << F.getName() << '\n';
 		DFSRecursive(&F, 0);
@@ -60,6 +64,21 @@ struct CFG : public FunctionPass {
 				}
 			}
 		}
+	}
+
+	void loadSkipFunc(const std::string& f)
+	{
+		std::ifstream input(f);
+		if (!input.is_open())
+		{
+			return;
+		}
+		std::string line;
+		while(std::getline(input,line))
+		{
+			skip_func_set.insert(line);
+		}
+		input.close();
 	}
 };
 
