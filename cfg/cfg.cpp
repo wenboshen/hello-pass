@@ -52,7 +52,7 @@ struct CFG : public FunctionPass {
 					for (int i=0; i<level; i++)
 						errs() << "--->";
 
-					errs() << "`" << callee->getName() << "`" << "\n";
+					errs() << "`" << callee->getName() << "`" << "  \n";
 
 					if (skip_func_set.find(callee->getName()) != skip_func_set.end())
 						continue;
