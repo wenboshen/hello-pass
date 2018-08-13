@@ -1,0 +1,28 @@
+Control Flow Graph for System Call: SyS_times  
+Please note that every function will be expanded only once!!! 
+
+`SyS_times`  
+--->[`thread_group_cputime_adjusted`](https://elixir.bootlin.com/linux/v4.14.62/ident/thread_group_cputime_adjusted)  
+--->--->[`thread_group_cputime`](https://elixir.bootlin.com/linux/v4.14.62/ident/thread_group_cputime)  
+--->--->--->[`task_sched_runtime`](https://elixir.bootlin.com/linux/v4.14.62/ident/task_sched_runtime)  
+--->--->--->--->[`_raw_spin_lock_irqsave`](https://elixir.bootlin.com/linux/v4.14.62/ident/_raw_spin_lock_irqsave)  
+--->--->--->--->--->[`queued_spin_lock_slowpath`](https://elixir.bootlin.com/linux/v4.14.62/ident/queued_spin_lock_slowpath)  
+--->--->--->--->[`_raw_spin_lock`](https://elixir.bootlin.com/linux/v4.14.62/ident/_raw_spin_lock)  
+--->--->--->--->--->[`queued_spin_lock_slowpath`](https://elixir.bootlin.com/linux/v4.14.62/ident/queued_spin_lock_slowpath)  
+--->--->--->--->[`_raw_spin_unlock_irqrestore`](https://elixir.bootlin.com/linux/v4.14.62/ident/_raw_spin_unlock_irqrestore)  
+--->--->--->--->[`sched_clock_cpu`](https://elixir.bootlin.com/linux/v4.14.62/ident/sched_clock_cpu)  
+--->--->--->--->--->[`native_sched_clock`](https://elixir.bootlin.com/linux/v4.14.62/ident/native_sched_clock)  
+--->--->--->--->--->[`native_sched_clock`](https://elixir.bootlin.com/linux/v4.14.62/ident/native_sched_clock)  
+--->--->--->--->--->[`native_sched_clock`](https://elixir.bootlin.com/linux/v4.14.62/ident/native_sched_clock)  
+--->--->--->--->[`_raw_spin_unlock_irqrestore`](https://elixir.bootlin.com/linux/v4.14.62/ident/_raw_spin_unlock_irqrestore)  
+--->--->--->[`_raw_spin_lock_irqsave`](https://elixir.bootlin.com/linux/v4.14.62/ident/_raw_spin_lock_irqsave)  
+--->--->--->[`_raw_spin_unlock_irqrestore`](https://elixir.bootlin.com/linux/v4.14.62/ident/_raw_spin_unlock_irqrestore)  
+--->--->[`cputime_adjust`](https://elixir.bootlin.com/linux/v4.14.62/ident/cputime_adjust)  
+--->--->--->[`_raw_spin_lock_irqsave`](https://elixir.bootlin.com/linux/v4.14.62/ident/_raw_spin_lock_irqsave)  
+--->--->--->[`_raw_spin_unlock_irqrestore`](https://elixir.bootlin.com/linux/v4.14.62/ident/_raw_spin_unlock_irqrestore)  
+--->[`nsec_to_clock_t`](https://elixir.bootlin.com/linux/v4.14.62/ident/nsec_to_clock_t)  
+--->[`nsec_to_clock_t`](https://elixir.bootlin.com/linux/v4.14.62/ident/nsec_to_clock_t)  
+--->[`nsec_to_clock_t`](https://elixir.bootlin.com/linux/v4.14.62/ident/nsec_to_clock_t)  
+--->[`nsec_to_clock_t`](https://elixir.bootlin.com/linux/v4.14.62/ident/nsec_to_clock_t)  
+--->[`_copy_to_user`](https://elixir.bootlin.com/linux/v4.14.62/ident/_copy_to_user)  
+--->[`jiffies_64_to_clock_t`](https://elixir.bootlin.com/linux/v4.14.62/ident/jiffies_64_to_clock_t)  
