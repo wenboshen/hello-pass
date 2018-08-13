@@ -5,6 +5,7 @@
 #include "llvm/IR/LegacyPassManager.h"
 #include "llvm/IR/InstIterator.h"
 #include "llvm/Transforms/IPO/PassManagerBuilder.h"
+#include "llvm/Support/CommandLine.h"
 
 #include <unordered_set>
 #include <fstream>
@@ -14,6 +15,8 @@ using namespace std;
 
 #define DEBUG_TYPE "CFG"
 
+static cl::opt<string> SyscallName("syscall", cl::desc("Specify syscall name"), cl::init("SyS_open"));
+
 struct CFG : public FunctionPass {
 	static char ID; // Pass identification, replacement for typeid
 	CFG() : FunctionPass(ID) {}
@@ -22,7 +25,7 @@ struct CFG : public FunctionPass {
 	unordered_set<string> skip_func_set;
 
 	bool runOnFunction(Function &F) override {
-		if (F.getName().compare("SyS_open") != 0)
+		if (F.getName().compare(SyscallName) != 0)
 			return false;
 
 		//loadSkipFunc("./cfg/skip.func");
