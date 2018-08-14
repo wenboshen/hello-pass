@@ -1,8 +1,6 @@
 ## Control Flow Graph for System Call
-* Kernel version: v4.14.62
+* Kernel version: [v4.14.62](https://elixir.bootlin.com/linux/v4.14.62/source)
 * Architecture: x86_64
-
-Please note that every function will be expanded only once!!!
 
 [SyS_accept4](https://github.com/wenboshen/hello-pass/blob/master/result/SyS_accept4.md)  
 [SyS_accept](https://github.com/wenboshen/hello-pass/blob/master/result/SyS_accept.md)  
